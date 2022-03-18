@@ -1,5 +1,6 @@
 const express = require('express');
-const productRouter = require('./routes/product')
+const productRouter = require('./routes/product');
+const userRouter = require('./routes/user');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27020/booster-seminar', err => {
@@ -14,7 +15,8 @@ const app = express();
 //middleware
 app.use(express.json());
 
-app.use('/products', productRouter)
+app.use('/products', productRouter);
+app.use('/users', userRouter)
 
 //error handler
 app.use((req, res, next) => {

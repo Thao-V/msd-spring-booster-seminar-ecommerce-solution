@@ -1,7 +1,10 @@
 const express = require('express');
-const productController = require('../controllers/product')
+const productController = require('../controllers/product');
+const userController = require('../controllers/user')
 
 const router = express.Router();
+
+router.use(userController.authorize);
 
 router.get('', productController.getAll)//get all products
 router.post('/create', productController.checkPriceMiddleware, productController.create);//create a new product
